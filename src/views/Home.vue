@@ -55,6 +55,7 @@ export default {
             console.log(res.data)
             if(res.data.status == 0){
               this.$message.success(res.data.msg)
+               sessionStorage.setItem('users' , JSON.stringify(res.data.data))
               this.$router.push('users')
             }
           })

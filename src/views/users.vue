@@ -6,7 +6,7 @@
           <span>HAPPY MMALL</span>
         </div>
         <div class="box_right">
-          <span>欢迎</span>
+          <span>欢迎{{username}}</span>
           <span @click="outLogin">退出</span>
         </div>
       </el-header>
@@ -19,8 +19,9 @@
             text-color="#fff"
             active-text-color="#ffd04b"
             :unique-opened="true"
+            router
           >
-            <el-menu-item index="1">
+            <el-menu-item index="/one">
               <i class="el-icon-setting"></i>
               <span slot="title">首页</span>
             </el-menu-item>
@@ -30,7 +31,7 @@
                 <span>商品</span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="1-1">商品管理</el-menu-item>
+                <el-menu-item index="/goods">商品管理</el-menu-item>
                 <el-menu-item index="1-2">品类管理</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
@@ -55,7 +56,9 @@
             </el-submenu>
           </el-menu>
         </el-aside>
-        <el-main>Main</el-main>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -64,10 +67,15 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      username: ""
+    };
   },
   created() {},
-  mounted() {},
+  mounted() {
+    let user = JSON.parse(sessionStorage.getItem("users"));
+    this.username = user.username;
+  },
   methods: {
     outLogin() {
       this.$router.push("/");
@@ -120,8 +128,5 @@ export default {
 }
 .el-main {
   background-color: #e9eef3;
-  color: #333;
-  text-align: center;
-  line-height: 160px;
 }
 </style>

@@ -19,7 +19,24 @@ const routes = [{
   {
     path: '/users',
     name: 'Users',
-    component: () => import('../views/users')
+    component: () => import('../views/users'),
+    children:[
+      {
+        path: '/one',
+        name: 'One',
+        component: () => import('../views/one/one.vue')
+      },
+      {
+        path: '/goods',
+        name: 'Goods',
+        component: () => import('../views/goods/goods.vue')
+      },
+      {
+        path: '/detail',
+        name: 'Detail',
+        component: () => import('../views/goods/detail')
+      },
+    ]
   },
  
 

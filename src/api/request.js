@@ -17,8 +17,8 @@ console.log(process.env.NODE_ENV)
 
 // 创建axios对象
 const Server = axios.create({
-  baseURL: baseUrl, //基础url地址
-  // withCredentials:true,
+  baseURL: '/api', //基础url地址
+  withCredentials:true,
   timeout: 5000, //超时时间
 })
 console.log(baseUrl)
